@@ -5,25 +5,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest tests/'
+                bat 'pytest tests/'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t registration-app .'
+                bat 'docker build -t registration-app .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 registration-app'
+                bat 'docker run -d -p 5000:5000 registration-app'
             }
         }
     }
